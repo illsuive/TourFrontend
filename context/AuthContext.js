@@ -15,7 +15,7 @@ export const useAuthStore = create((set) => ({
     signup: async (name, email, password) => {
         set({ isLoading: true, error: null });
         try {
-            const response = await axios.post(`${API_URL}/auth/signup`, { name, email, password });
+            const response = await axios.post(`${API_URL}/auth/signup`, { name, email, password } , { withCredentials: true });
             const { token, ...userData } = response.data;
 
             localStorage.setItem('token', token);
@@ -34,7 +34,7 @@ export const useAuthStore = create((set) => ({
     login: async (email, password) => {
         set({ isLoading: true, error: null });
         try {
-            const response = await axios.post(`${API_URL}/auth/login`, { email, password });
+            const response = await axios.post(`${API_URL}/auth/login`, { email, password } , { withCredentials: true });
             const { token, ...userData } = response.data;
 
             localStorage.setItem('token', token);
