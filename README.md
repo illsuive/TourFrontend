@@ -8,6 +8,11 @@ The frontend acts as an intelligent orchestration layer, combining deterministic
 
 ## 🏗️ Architecture & Core System Mechanics
 
+[ Frontend Client ] --- (POST /api/trips/generate) ---> [ Express Backend ]
+        ^                                                       |
+        |---- Redirects to /trips/:id <--- Sends Saved Doc -----|
+
+        
 ### 1. Unified Dashboard Feed Routing
 Instead of pulling down data streams over multiple expensive network requests, the system utilizes a **single-query data pipeline**. 
 When a user authenticates and enters the `/dashboard` workspace, the frontend invokes `api.get('/trips')`. The component automatically maps and separates the aggregated array into three distinct visual categories using client-side JavaScript array filters:
